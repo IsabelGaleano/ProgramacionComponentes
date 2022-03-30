@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Journal {
@@ -13,6 +14,9 @@ public class Journal {
     private String title;
     private Date created;
     private String summary;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "journal")
+    private List<Author> authors;
 
     @Transient
     private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
@@ -60,6 +64,14 @@ public class Journal {
 
     public String getCreatedAsShort() {
         return format.format(created);
+    }
+
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 
     public String toString() {

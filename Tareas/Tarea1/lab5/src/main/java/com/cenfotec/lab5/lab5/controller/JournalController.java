@@ -59,5 +59,15 @@ public class JournalController {
 
     }
 
+    @RequestMapping(value = "/borrar/{id}")
+    public String borrar(Model model, @PathVariable int id){
+
+        journalService.deleteJournal(id);
+        return "exito";
+
+
+    }
+
+
 
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonaService {
@@ -19,6 +20,18 @@ public class PersonaService {
     public List<Persona> getAll(){
         return personaRepository.findAll();
     }
+    public void updatePersona(Persona persona) {
+        personaRepository.save(persona);
+    }
+
+    public Optional<Persona> getById(int id) {
+        return personaRepository.findById(Long.valueOf(id));
+    }
+
+    public void deletePersona(int id) {
+        personaRepository.deleteById(Long.valueOf(id));
+    }
+
 
 
 }

@@ -3,34 +3,14 @@
 <head>
     <meta charset="utf-8"></meta>
     <meta http-equiv="Content-Type" content="text/html"></meta>
-    <title>Spring Boot Journal</title>
+    <title>Spring Boot Personas</title>
 
 </head>
 <body>
 <div>
-    <h1>Spring Boot Journal</h1>
-    <a href="/agregarEntrada">Add entry</a>
-    <a href="/listPersonas">Personas</a>
-    <ul>
-        <div th:each="entry,status : ${journal}">
-            <li>
-                <div></div>
-                <div>
-                    <div>
-                        <h4><span th:text="${entry.title}">TITLE</span></h4>
-                        <p><small><i></i>
-                            <span th:text="${entry.createdAsShort}">CREATED</span></small></p>
-                    </div>
-                    <div class="tl-body">
-                        <p><span th:text="${entry.summary}">SUMMARY</span></p>
-
-                    </div>
-                </div>
-            </li>
-            <a th:href="@{/editar/{id}(id=${entry.id})}" >Editar</a>
-            <a th:href="@{/borrar/{id}(id=${entry.id})}" >Borrar</a>
-        </div>
-    </ul>
+    <h1>Spring Boot Personas</h1>
+    <a href="/templatePersona">Add persona</a>
+    <a href="/">Volver al index</a>
     <ul>
         <div th:each="entry,status : ${persona}">
             <li>
@@ -50,6 +30,7 @@
                 </div>
             </li>
             <a th:href="@{/editarPersona/{id}(id=${entry.id})}" >Editar</a>
+            <a th:href="@{/borrarPersona/{id}(id=${entry.id})}" >Borrar</a>
         </div>
     </ul>
 
