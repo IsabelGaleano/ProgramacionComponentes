@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="Content-Type" content="text/html"></meta>
+    <title>Spring Boot Persona</title>
+</head>
+<body>
+<h1>Insertar persona</h1>
+
+<form action="#" th:action="@{/templatePersona}" th:object="${persona}" method="post">
+    <label for="nombre">Nombre</label>
+    <input type="text" th:field="*{nombre}"  id="nombre"/>
+    <label for="apellido1">Primer apellido</label>
+    <input type="text" th:field="*{apellido1}"  id="apellido1"/>
+    <label for="apellido2">Segundo apellido</label>
+    <input type="text" th:field="*{apellido2}"  id="apellido2"/>
+    <label for="direccion">Direccion</label>
+    <textarea id="direccion" th:field="*{direccion}" rows="4" cols="50"></textarea>
+    <label for="fechaNacimiento">Fecha de nacimiento</label>
+    <input type="text" th:field="*{fechaNacimiento}"  id="fechaNacimiento"/>
+    <input type="submit" value="Agregar persona">
+</form>
+
+<h1>Actualizar persona</h1>
+
+<form action="#" th:action="@{/templatePersona}" th:object="${persona}" method="put">
+    <label for="id">ID persona</label>
+    <input type="text" th:field="*{id}"  id="id"/>
+    <label for="nombre">Nombre</label>
+    <input type="text" th:field="*{nombre}"  id="nombre"/>
+    <label for="apellido1">Primer apellido</label>
+    <input type="text" th:field="*{apellido1}"  id="apellido1"/>
+    <label for="apellido2">Segundo apellido</label>
+    <input type="text" th:field="*{apellido2}"  id="apellido2"/>
+    <label for="direccion">Direccion</label>
+    <textarea id="direccion" th:field="*{direccion}" rows="4" cols="50"></textarea>
+    <label for="fechaNacimiento">Fecha de nacimiento</label>
+    <input type="text" th:field="*{fechaNacimiento}"  id="fechaNacimiento"/>
+    <input type="submit" value="Actualizar persona">
+</form>
+
+<h1>Eliminar persona</h1>
+
+<form action="#" th:action="@{/templatePersona}" th:object="${persona}" method="delete">
+    <label for="id">ID persona</label>
+    <input type="text" th:field="*{id}"  id="id"/>
+    <input type="submit" value="Eliminar persona">
+</form>
+
+</body>
+</html>
