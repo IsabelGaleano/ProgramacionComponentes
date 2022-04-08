@@ -16,11 +16,18 @@ public class PersonaService {
     public void savePersona(Persona persona) {
         personaRepository.save(persona);
     }
-    public List<Persona> getById(int id) {
-        return personaRepository.findAllByIdCliente(id);
+//    public List<Persona> getById(int id) {
+//        return personaRepository.findAllByIdCliente(id);
+//    }
+    public Optional<Persona> getById(int id) {
+        return personaRepository.findById(Long.valueOf(id));
     }
-
+    public void updatePersona(Persona journal) {
+        personaRepository.save(journal);
+    }
     public List<Persona> getAll() {
         return personaRepository.findAll();
+    }
+    public void deletePersona(int id) {personaRepository.deleteById(Long.valueOf(id));
     }
 }

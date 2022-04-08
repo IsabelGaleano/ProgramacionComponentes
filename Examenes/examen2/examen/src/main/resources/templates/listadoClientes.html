@@ -144,6 +144,7 @@
                                 <h4 class="font-weight-bold mb-0">Servicio de auditorias</h4>
                             </div>
                             <a href="/registroClientes" class="btn btn-dark btn-lg btn-block">Registrar cliente</a>
+                            <a href="/registroPersonas" class="btn btn-dark btn-lg btn-block">Registrar persona</a>
                         </div>
                     </div>
                 </div>
@@ -169,8 +170,8 @@
                                         <td th:text="${entry.direccion}"></td>
                                         <td th:text="${entry.telefono}"></td>
                                         <td>
-<!--                                            <a href="/listadoPersonas" class="btn btn-dark">Ver contactos</a>-->
-                                            <a th:href="@{/listadoPersonas/{id}(id=${entry.id})}" class="btn btn-dark">Ver contactos</a>
+                                            <a href="/listadoPersonas" class="btn btn-dark">Ver contactos</a>
+<!--                                            <a th:href="@{/listadoPersonas/{id}(id=${entry.id})}" class="btn btn-dark">Ver contactos</a>-->
                                         </td>
                                     </tr>
                                     </tbody>
