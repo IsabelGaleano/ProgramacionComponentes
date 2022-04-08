@@ -143,8 +143,7 @@
                             <div>
                                 <h4 class="font-weight-bold mb-0">Servicio de auditorias</h4>
                             </div>
-                            <a href="/registroAuditores"  class="btn btn-dark btn-lg btn-block">Registrar auditor</a>
-
+                            <a href="/registroClientes" class="btn btn-dark btn-lg btn-block">Registrar cliente</a>
                         </div>
                     </div>
                 </div>
@@ -152,43 +151,27 @@
                 <div class="w-100">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Hoverable Table</h4>
-                            <p class="card-description">
-                                Add class <code>.table-hover</code>
-                            </p>
                             <div class="table-responsive">
-                                <table class="table table-hover">
+                                <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>Usuario</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido 1</th>
-                                        <th>Apellido 2</th>
-                                        <th>Correo electrónico</th>
-                                        <th>Telefono</th>
-                                        <th>Fecha nacimiento</th>
-                                        <th>Direccion</th>
-                                        <th>Disponibilidad</th>
-                                        <th>Especialidad</th>
-                                        <th>Estado</th>
+                                        <th>Razón Social</th>
+                                        <th>Cédula Jurídica</th>
+                                        <th>Dirección</th>
+                                        <th>Teléfono</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
-                                    <tbody th:each="entry,status : ${auditor}">
+                                    <tbody th:each="entry,status : ${cliente}">
                                     <tr>
-                                        <td  th:text="${entry.id}">ID</td>
-                                        <td  th:text="${entry.nombre}">NOMBRE</td>
-                                        <td  th:text="${entry.apellido1}">NOMBRE</td>
-                                        <td  th:text="${entry.apellido2}">NOMBRE</td>
-                                        <td  th:text="${entry.email}">NOMBRE</td>
-                                        <td  th:text="${entry.telefono}">NOMBRE</td>
-                                        <td  th:text="${entry.fechaNacimiento}">NOMBRE</td>
-                                        <td  th:text="${entry.direccion}">NOMBRE</td>
-                                        <td  th:text="${entry.disponibilidadViaje}">NOMBRE</td>
-                                        <td  th:text="${entry.especialidad}">NOMBRE</td>
-                                        <td  th:text="${entry.estado}">NOMBRE</td>
-                                       
+                                        <td th:text="${entry.razonSocial}"></td>
+                                        <td th:text="${entry.cedulaJuridica}"></td>
+                                        <td th:text="${entry.direccion}"></td>
+                                        <td th:text="${entry.telefono}"></td>
+                                        <td>
+                                            <a th:href="@{/listarPorId/{id}(id=${entry.id})}" class="btn btn-dark">Ver contactos</a>
+                                        </td>
                                     </tr>
-
                                     </tbody>
                                 </table>
                             </div>
