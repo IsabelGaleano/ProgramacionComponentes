@@ -164,8 +164,9 @@
                     <th>Teléfono</th>
                   </tr>
                   </thead>
-                  <tbody th:each="entry,status : ${persona}">
+                  <tbody th:each="entry,status : ${personas}">
                   <tr>
+                    <td  th:text="${entry.idCliente}">NOMBRE</td>
                     <td  th:text="${entry.nombre}">NOMBRE</td>
                     <td  th:text="${entry.apellido1}">NOMBRE</td>
                     <td  th:text="${entry.apellido2}">NOMBRE</td>
@@ -197,10 +198,10 @@
   </div>
   <!-- container-scroller -->
   <script>
-    var id = window.location.href;
-    id = id.substr(id.length()-1);
+    var id = String(window.location.href);
+    id = id.substr(34);
     console.log(id);
-    // sessionStorage.setItem('IdCliente', id);
+    sessionStorage.setItem('IdCliente', id);
   </script>
   <!-- plugins:js -->
   <script src="../vendors/base/vendor.bundle.base.js"></script>

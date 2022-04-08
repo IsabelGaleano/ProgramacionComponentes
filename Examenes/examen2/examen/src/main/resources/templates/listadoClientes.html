@@ -169,7 +169,8 @@
                                         <td th:text="${entry.direccion}"></td>
                                         <td th:text="${entry.telefono}"></td>
                                         <td>
-                                            <a th:href="@{/listarPorId/{id}(id=${entry.id})}" class="btn btn-dark">Ver contactos</a>
+<!--                                            <a href="/listadoPersonas" class="btn btn-dark">Ver contactos</a>-->
+                                            <a th:href="@{/listadoPersonas/{id}(id=${entry.id})}" class="btn btn-dark">Ver contactos</a>
                                         </td>
                                     </tr>
                                     </tbody>

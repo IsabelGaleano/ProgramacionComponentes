@@ -16,9 +16,10 @@ public class PersonaService {
     public void savePersona(Persona persona) {
         personaRepository.save(persona);
     }
-    public Optional<Persona> findById(String id) {
-        return personaRepository.findById(id).map(record -> Optional.of(record)).orElse(Optional.empty());
+    public List<Persona> getById(int id) {
+        return personaRepository.findAllByIdCliente(id);
     }
+
     public List<Persona> getAll() {
         return personaRepository.findAll();
     }
