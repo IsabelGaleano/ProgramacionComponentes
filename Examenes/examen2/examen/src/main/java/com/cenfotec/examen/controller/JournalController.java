@@ -16,4 +16,6 @@ public class JournalController {
         return "index";
     }
 
+
+
 }
