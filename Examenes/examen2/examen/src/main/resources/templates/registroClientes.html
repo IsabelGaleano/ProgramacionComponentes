@@ -43,7 +43,6 @@
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
             <a class="navbar-brand  " href="/">Servicio Auditorias</a>
 
-
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 
@@ -141,67 +140,73 @@
                     <div class="col-md-12 grid-margin">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <h4 class="font-weight-bold mb-0">Servicio de auditorias</h4>
+                                <h4 class="font-weight-bold mb-0">Registrar Cliente</h4>
                             </div>
-                            <a href="/registroAuditores" class="btn btn-dark btn-lg btn-block">Registrar auditor</a>
 
                         </div>
                     </div>
                 </div>
                 <!-- CONTENT -->
-                <div class="w-100">
+                <div class="col-12 grid-margin">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Hoverable Table</h4>
-                            <p class="card-description">
-                                Add class <code>.table-hover</code>
-                            </p>
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>Usuario</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido 1</th>
-                                        <th>Apellido 2</th>
-                                        <th>Correo electrónico</th>
-                                        <th>Telefono</th>
-                                        <th>Fecha nacimiento</th>
-                                        <th>Direccion</th>
-                                        <th>Disponibilidad</th>
-                                        <th>Especialidad</th>
-                                        <th>Estado</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody th:each="entry,status : ${auditor}">
-                                    <tr>
-                                        <td th:text="${entry.id}">ID</td>
-                                        <td th:text="${entry.nombre}">NOMBRE</td>
-                                        <td th:text="${entry.apellido1}">APELLIDO1</td>
-                                        <td th:text="${entry.apellido2}">APELLIDO2</td>
-                                        <td th:text="${entry.email}">EMAIL</td>
-                                        <td th:text="${entry.telefono}">TELEFONO</td>
-                                        <td th:text="${entry.fechaNacimiento}">FECHANACIMIENTO</td>
-                                        <td th:text="${entry.direccion}">DIRECCION</td>
-                                        <td th:text="${entry.disponibilidadViaje}">DISPONIBILIDAD</td>
-                                        <td th:text="${entry.especialidad}">ESPECIALIDAD</td>
-                                        <td>
-                                            <a class="btn btn-dark btn-rounded btn-fw"
-                                               th:href="@{/activar/{id}(id=${entry.id})}"
-                                               th:text="${entry.estado}">ESTADO</a>
-                                        </td>
-                                        <td>
-                                            <a th:href="@{/editarAuditor/{id}(id=${entry.id})}" class="btn btn-info btn-icon-text">
-                                                Editar
-                                                <i class="ti-file btn-icon-append"></i>
-                                            </a>
-                                        </td>
+                            <h4 class="card-title">Registrar cliente</h4>
+                            <form action="#" th:action="@{/registroClientes}" th:object="${cliente}" method="post"
+                                  class="form-sample">
+                                <p class="card-description">
+                                    Información personal
+                                </p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Razón Social</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" th:field="*{razonSocial}" id="razonSocial"
+                                                       class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Cédula Jurídica</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" th:field="*{cedulaJuridica}" id="cedulaJuridica"
+                                                       class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Dirección</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" th:field="*{direccion}" id="direccion"
+                                                       class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Teléfono</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" th:field="*{telefono}" id="telefono" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
 
-                                    </tr>
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-primary me-2" onclick="registrar()">Registrar</button>
+                                        <button class="btn btn-light">Cancelar</button>
+                                    </div>
 
-                                    </tbody>
-                                </table>
-                            </div>
+
+                                </div>
+
+
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -224,6 +229,11 @@
     <!-- container-scroller -->
 
     <!-- plugins:js -->
+<!--    <script>-->
+<!--        const registrar = () => {-->
+<!--            sessionStorage.setItem('IdCliente', document.getElementById('cedulaJuridica').value);-->
+<!--        }-->
+<!--    </script>-->
     <script src="../vendors/base/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page-->
