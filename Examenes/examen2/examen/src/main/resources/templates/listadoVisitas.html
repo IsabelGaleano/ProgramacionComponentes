@@ -143,7 +143,7 @@
                             <div>
                                 <h4 class="font-weight-bold mb-0">Servicio de auditorias</h4>
                             </div>
-                            <a href="/registroAuditores" class="btn btn-dark btn-lg btn-block">Registrar auditor</a>
+                            <a href="/registroVisitas" class="btn btn-dark btn-lg btn-block">Registrar visita</a>
 
                         </div>
                     </div>
@@ -160,42 +160,21 @@
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Usuario</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido 1</th>
-                                        <th>Apellido 2</th>
-                                        <th>Correo electrónico</th>
-                                        <th>Telefono</th>
-                                        <th>Fecha nacimiento</th>
-                                        <th>Direccion</th>
-                                        <th>Disponibilidad</th>
-                                        <th>Especialidad</th>
-                                        <th>Estado</th>
+                                        <th>ID</th>
+                                        <th>Fecha</th>
+                                        <th>Consultor</th>
+                                        <th>Visitante</th>
+                                        <th>Área</th>
+
                                     </tr>
                                     </thead>
-                                    <tbody th:each="entry,status : ${auditor}">
+                                    <tbody th:each="entry,status : ${visita}">
                                     <tr>
                                         <td th:text="${entry.id}">ID</td>
-                                        <td th:text="${entry.nombre}">NOMBRE</td>
-                                        <td th:text="${entry.apellido1}">APELLIDO1</td>
-                                        <td th:text="${entry.apellido2}">APELLIDO2</td>
-                                        <td th:text="${entry.email}">EMAIL</td>
-                                        <td th:text="${entry.telefono}">TELEFONO</td>
-                                        <td th:text="${entry.fechaNacimiento}">FECHANACIMIENTO</td>
-                                        <td th:text="${entry.direccion}">DIRECCION</td>
-                                        <td th:text="${entry.disponibilidadViaje}">DISPONIBILIDAD</td>
-                                        <td th:text="${entry.especialidad}">ESPECIALIDAD</td>
-                                        <td>
-                                            <a class="btn btn-dark btn-rounded btn-fw"
-                                               th:href="@{/activar/{id}(id=${entry.id})}"
-                                               th:text="${entry.estado}">ESTADO</a>
-                                        </td>
-                                        <td>
-                                            <a th:href="@{/editarAuditor/{id}(id=${entry.id})}" class="btn btn-info btn-icon-text">
-                                                Editar
-                                                <i class="ti-file btn-icon-append"></i>
-                                            </a>
-                                        </td>
+                                        <td th:text="${entry.fecha}">FECHA</td>
+                                        <td th:text="${entry.idConsultor}">IDCONSULTOR</td>
+                                        <td th:text="${entry.idCliente}">IDCLIENTE</td>
+                                        <td th:text="${entry.area}">AREA</td>
 
                                     </tr>
 

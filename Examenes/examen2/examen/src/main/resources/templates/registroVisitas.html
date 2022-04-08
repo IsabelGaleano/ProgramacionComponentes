@@ -43,7 +43,6 @@
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
             <a class="navbar-brand  " href="index.html">Servicio Auditorias</a>
 
-
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 
@@ -143,65 +142,57 @@
                             <div>
                                 <h4 class="font-weight-bold mb-0">Servicio de auditorias</h4>
                             </div>
-                            <a href="/registroAuditores" class="btn btn-dark btn-lg btn-block">Registrar auditor</a>
 
                         </div>
                     </div>
                 </div>
                 <!-- CONTENT -->
-                <div class="w-100">
+                <div class="col-md-6 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Hoverable Table</h4>
+                            <h4 class="card-title">Default form</h4>
                             <p class="card-description">
-                                Add class <code>.table-hover</code>
+                                Basic form layout
                             </p>
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>Usuario</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido 1</th>
-                                        <th>Apellido 2</th>
-                                        <th>Correo electrónico</th>
-                                        <th>Telefono</th>
-                                        <th>Fecha nacimiento</th>
-                                        <th>Direccion</th>
-                                        <th>Disponibilidad</th>
-                                        <th>Especialidad</th>
-                                        <th>Estado</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody th:each="entry,status : ${auditor}">
-                                    <tr>
-                                        <td th:text="${entry.id}">ID</td>
-                                        <td th:text="${entry.nombre}">NOMBRE</td>
-                                        <td th:text="${entry.apellido1}">APELLIDO1</td>
-                                        <td th:text="${entry.apellido2}">APELLIDO2</td>
-                                        <td th:text="${entry.email}">EMAIL</td>
-                                        <td th:text="${entry.telefono}">TELEFONO</td>
-                                        <td th:text="${entry.fechaNacimiento}">FECHANACIMIENTO</td>
-                                        <td th:text="${entry.direccion}">DIRECCION</td>
-                                        <td th:text="${entry.disponibilidadViaje}">DISPONIBILIDAD</td>
-                                        <td th:text="${entry.especialidad}">ESPECIALIDAD</td>
-                                        <td>
-                                            <a class="btn btn-dark btn-rounded btn-fw"
-                                               th:href="@{/activar/{id}(id=${entry.id})}"
-                                               th:text="${entry.estado}">ESTADO</a>
-                                        </td>
-                                        <td>
-                                            <a th:href="@{/editarAuditor/{id}(id=${entry.id})}" class="btn btn-info btn-icon-text">
-                                                Editar
-                                                <i class="ti-file btn-icon-append"></i>
-                                            </a>
-                                        </td>
+                            <form action="#" th:action="@{/registroVisitas}" th:object="${visitaTrabajo}" method="post"
+                                  class="forms-sample">
+                                <div class="form-group">
+                                    <label>Fecha de vsita</label>
+                                    <input class="form-control" th:field="*{fecha}"
+                                           id="fechaNacimiento" placeholder="dd/mm/yyyy"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Consultor</label>
+                                    <select class="form-control form-control-sm" th:field="*{idConsultor}" id="idConsultor">
+                                        <option value="0">Seleccione el consultor</option>
+                                        <option th:each="auditor : ${auditores}" th:value="${auditor.nombre}" th:text="${auditor.nombre}">1</option>
 
-                                    </tr>
+                                    </select>
+                                </div>
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                <div class="form-group">
+                                    <label>Cliente a visitar</label>
+                                    <select th:field="*{idCliente}"  id="idCliente" class="form-control form-control-sm">
+                                        <option value="0">Seleccione el cliente</option>
+                                        <option th:each="auditor : ${auditores}" th:value="${auditor.nombre}" th:text="${auditor.nombre}">1</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Especialidad</label>
+                                    <select th:field="*{area}" class="form-control form-control-sm" id="area">
+                                        class="form-control">
+                                        <option th:value="'Calidad'">Calidad</option>
+                                        <option th:value="'Procesos'">Procesos</option>
+                                        <option th:value="'Salubridad'">Salubridad</option>
+                                        <option th:value="'Seguridad Laboral'">Seguridad Laboral</option>
+                                        <option th:value="'Seguridad de TI'">Seguridad de TI</option>
+                                    </select>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary me-2">Registrar</button>
+                                <button class="btn btn-light">Cancelar</button>
+                            </form>
                         </div>
                     </div>
                 </div>

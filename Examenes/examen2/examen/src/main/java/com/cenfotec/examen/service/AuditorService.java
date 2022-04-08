@@ -20,4 +20,15 @@ public class AuditorService {
         return auditorRepository.findAll();
     }
 
+    public Optional<Auditor> getById(int id) {
+        return auditorRepository.findById(Long.valueOf(id));
+    }
+
+    public void updateAuditor(Auditor auditor) {
+        auditorRepository.save(auditor);
+    }
+
+
+
+
 }
