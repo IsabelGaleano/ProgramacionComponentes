@@ -43,7 +43,6 @@
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
             <a class="navbar-brand  " href="index.html">Servicio Auditorias</a>
 
-
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 
@@ -143,55 +142,149 @@
                             <div>
                                 <h4 class="font-weight-bold mb-0">Servicio de auditorias</h4>
                             </div>
-                            <a href="/registroAuditores"  class="btn btn-dark btn-lg btn-block">Registrar auditor</a>
 
                         </div>
                     </div>
                 </div>
                 <!-- CONTENT -->
-                <div class="w-100">
+                <div class="col-12 grid-margin">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Hoverable Table</h4>
-                            <p class="card-description">
-                                Add class <code>.table-hover</code>
-                            </p>
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>Usuario</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido 1</th>
-                                        <th>Apellido 2</th>
-                                        <th>Correo electrónico</th>
-                                        <th>Telefono</th>
-                                        <th>Fecha nacimiento</th>
-                                        <th>Direccion</th>
-                                        <th>Disponibilidad</th>
-                                        <th>Especialidad</th>
-                                        <th>Estado</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody th:each="entry,status : ${auditor}">
-                                    <tr>
-                                        <td  th:text="${entry.id}">ID</td>
-                                        <td  th:text="${entry.nombre}">NOMBRE</td>
-                                        <td  th:text="${entry.apellido1}">NOMBRE</td>
-                                        <td  th:text="${entry.apellido2}">NOMBRE</td>
-                                        <td  th:text="${entry.email}">NOMBRE</td>
-                                        <td  th:text="${entry.telefono}">NOMBRE</td>
-                                        <td  th:text="${entry.fechaNacimiento}">NOMBRE</td>
-                                        <td  th:text="${entry.direccion}">NOMBRE</td>
-                                        <td  th:text="${entry.disponibilidadViaje}">NOMBRE</td>
-                                        <td  th:text="${entry.especialidad}">NOMBRE</td>
-                                        <td  th:text="${entry.estado}">NOMBRE</td>
-                                       
-                                    </tr>
+                            <h4 class="card-title">Registrar auditor</h4>
+                            <form action="#" th:action="@{/registroAuditores}" th:object="${auditor}" method="post"
+                                  class="form-sample">
+                                <p class="card-description">
+                                    Informacion personal
+                                </p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Nombre</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" th:field="*{nombre}" id="nombre"
+                                                       class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Primer apellido</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" th:field="*{apellido1}" id="apellido1"
+                                                       class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Segundo apellido</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" th:field="*{apellido2}" id="apellido2"
+                                                       class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Correo electrónico</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" th:field="*{email}" id="email" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Teléfono</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" th:field="*{telefono}" id="telefono"
+                                                       class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Fecha de nacimiento</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" th:field="*{fechaNacimiento}"
+                                                       id="fechaNacimiento" placeholder="dd/mm/yyyy"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Disponibilidad para viajar</label>
+                                            <div class="col-sm-9">
+                                                <select th:field="*{disponibilidadViaje}" id="disponibilidadViaje"
+                                                        class="form-control">
+                                                    <option th:value="'Si'">Sí</option>
+                                                    <option th:value="'No'">No</option>
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Especialidad</label>
+                                            <div class="col-sm-9">
+                                                <select th:field="*{especialidad}" id="especialidad"
+                                                        class="form-control">
+                                                    <option th:value="'Calidad'">Calidad</option>
+                                                    <option th:value="'Procesos'">Procesos</option>
+                                                    <option th:value="'Salubridad'">Salubridad</option>
+                                                    <option th:value="'Seguridad Laboral'">Seguridad Laboral</option>
+                                                    <option th:value="'Seguridad de TI'">Seguridad de TI</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Dirección</label>
+                                            <div class="col-sm-9">
+
+                                                <textarea class="form-control" id="direccion" th:field="*{direccion}" rows="4" cols="50">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Estado</label>
+                                            <div class="col-sm-9">
+                                                <select th:field="*{estado}" id="estado" class="form-control">
+                                                    <option th:value="'Activo'">Activo</option>
+                                                    <option th:value="'Inactivo'">Inactivo</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-primary me-2">Registrar</button>
+                                        <button class="btn btn-light">Cancelar</button>
+                                    </div>
+
+
+                                </div>
+
+
+                            </form>
                         </div>
                     </div>
                 </div>
