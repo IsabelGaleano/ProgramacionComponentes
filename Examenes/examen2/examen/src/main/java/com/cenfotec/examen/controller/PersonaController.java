@@ -1,6 +1,7 @@
 package com.cenfotec.examen.controller;
 
 import com.cenfotec.examen.domain.Persona;
+import com.cenfotec.examen.service.ClienteService;
 import com.cenfotec.examen.service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,25 +22,24 @@ import java.util.Optional;
 public class PersonaController {
     @Autowired
     PersonaService personaService;
+    @Autowired
+    ClienteService clienteService;
 
-    @RequestMapping("/listadoPersonas")
-    public String index(Model model) {
-        model.addAttribute("persona", personaService.getAll());
-        return "listadoPersonas";
+    @RequestMapping(value = "/listadoPersonas/{id}")
+    public String irAListar(Model model, @PathVariable Long id) {
+        List<Persona> personas = personaService.getByCliente(id);
+        if (personas.size() > 0) {
+            model.addAttribute("personas", personas);
+            return "listadoPersonas";
+        } else {
+            return "notFound";
+        }
     }
-//    @RequestMapping(value ="/listadoPersonas/{id}")
-//    public String irAListar(Model model, @PathVariable int id){
-//        Optional<Persona> persona = personaService.getById(id);
-//        if (personas.size() > 0){
-//            model.addAttribute("personas", personas);
-//            return "listadoPersonas";
-//        } else {
-//            return "notFound";
-//        }
-//    }
+
     @RequestMapping(value = "/registroPersonas", method = RequestMethod.GET)
     public String navegarPaginaInsertar(Model model) {
         model.addAttribute(new Persona());
+        model.addAttribute("clientes", clienteService.getAll());
         return "registroPersonas";
     }
 
@@ -48,10 +48,11 @@ public class PersonaController {
         personaService.savePersona(persona);
         return "index";
     }
+
     @RequestMapping(value = "/editarPersona/{id}")
     public String irAEditar(Model model, @PathVariable int id) {
         Optional<Persona> personaToEdit = personaService.getById(id);
-        if (personaToEdit.isPresent()){
+        if (personaToEdit.isPresent()) {
             model.addAttribute("personaToEdit", personaToEdit);
             return "editFormPersona";
         } else {
@@ -60,11 +61,12 @@ public class PersonaController {
     }
 
     @RequestMapping(value = "/editarPersona/{id}", method = RequestMethod.POST)
-    public String guardarCambios(Persona persona, BindingResult result,Model model,
+    public String guardarCambios(Persona persona, BindingResult result, Model model,
                                  @PathVariable int id) {
         personaService.updatePersona(persona);
         return "exito";
     }
+
     @RequestMapping(value = "/borrar/{id}")
     public String borrar(Model model, @PathVariable int id) {
         personaService.deletePersona(id);

@@ -10,7 +10,7 @@ public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int idCliente;
+    private Long idCliente;
     private String nombre;
     private String apellido1;
     private String apellido2;
@@ -20,7 +20,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(int idCliente, String nombre, String apellido1, String apellido2, String email, String telefono) {
+    public Persona(Long idCliente, String nombre, String apellido1, String apellido2, String email, String telefono) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -37,11 +37,11 @@ public class Persona {
         this.id = id;
     }
 
-    public int getIdCliente() {
+    public Long getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
     }
 
