@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface PersonaRepository extends JpaRepository<Persona, Long> {
-    public List<Persona> findAllByIdCliente(int id);
+    public List<Persona> findAllByIdCliente(Long id);
 }

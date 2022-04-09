@@ -41,7 +41,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand  " href="/">Servicio Auditorias</a>
+            <a class="navbar-brand  " href="index.html">Servicio Auditorias</a>
 
 
         </div>
@@ -60,7 +60,7 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">
+                    <a class="nav-link" href="index.html">
                         <i class="ti-shield menu-icon"></i>
                         <span class="menu-title">Servicios</span>
                     </a>
@@ -143,6 +143,8 @@
                             <div>
                                 <h4 class="font-weight-bold mb-0">Servicio de auditorias</h4>
                             </div>
+                            <a href="/registroVisitas" class="btn btn-dark btn-lg btn-block">Registrar visita</a>
+
                         </div>
                     </div>
                 </div>
@@ -150,30 +152,29 @@
                 <div class="w-100">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Personas de Contacto</h4>
+                            <h4 class="card-title">Hoverable Table</h4>
+                            <p class="card-description">
+                                Add class <code>.table-hover</code>
+                            </p>
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Nombre</th>
-                                        <th>Primer Apellido</th>
-                                        <th>Segundo Apellido</th>
-                                        <th>Correo electrónico</th>
-                                        <th>Teléfono</th>
+                                        <th>ID</th>
+                                        <th>Fecha</th>
+                                        <th>Consultor</th>
+                                        <th>Visitante</th>
+                                        <th>Área</th>
+
                                     </tr>
                                     </thead>
-                                    <tbody th:each="entry,status : ${personas}">
+                                    <tbody th:each="entry,status : ${visita}">
                                     <tr>
-                                        <td th:text="${entry.idCliente}">NOMBRE</td>
-                                        <td th:text="${entry.nombre}">NOMBRE</td>
-                                        <td th:text="${entry.apellido1}">NOMBRE</td>
-                                        <td th:text="${entry.apellido2}">NOMBRE</td>
-                                        <td th:text="${entry.email}">NOMBRE</td>
-                                        <td th:text="${entry.telefono}">NOMBRE</td>
-                                        <td>
-                                            <a th:href="@{/borrar/{id}(id=${entry.id})}"
-                                               class="btn btn-dark">Borrar contacto</a>
-                                        </td>
+                                        <td th:text="${entry.id}">ID</td>
+                                        <td th:text="${entry.fecha}">FECHA</td>
+                                        <td th:text="${entry.idConsultor}">IDCONSULTOR</td>
+                                        <td th:text="${entry.idCliente}">IDCLIENTE</td>
+                                        <td th:text="${entry.area}">AREA</td>
 
                                     </tr>
 
@@ -200,12 +201,7 @@
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    <script>
-        var id = String(window.location.href);
-        id = id.substr(34);
-        console.log(id);
-        sessionStorage.setItem('IdCliente', id);
-    </script>
+
     <!-- plugins:js -->
     <script src="../vendors/base/vendor.bundle.base.js"></script>
     <!-- endinject -->

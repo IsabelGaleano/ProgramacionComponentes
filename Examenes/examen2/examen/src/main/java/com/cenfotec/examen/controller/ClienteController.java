@@ -31,7 +31,7 @@ public class ClienteController {
             model.addAttribute("cliente", clientePorID);
             return "listadoPersonas";
         } else {
-            return "notFound";
+            return "listadoPersonas";
         }
     }
     @RequestMapping(value = "/registroClientes", method = RequestMethod.GET)
