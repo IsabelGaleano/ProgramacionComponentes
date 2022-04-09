@@ -41,8 +41,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand  " href="/">Servicio Auditorias</a>
-
+            <a class="navbar-brand  " href="index.html">Servicio Auditorias</a>
 
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -60,7 +59,7 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">
+                    <a class="nav-link" href="index.html">
                         <i class="ti-shield menu-icon"></i>
                         <span class="menu-title">Servicios</span>
                     </a>
@@ -143,43 +142,57 @@
                             <div>
                                 <h4 class="font-weight-bold mb-0">Servicio de auditorias</h4>
                             </div>
+
                         </div>
                     </div>
                 </div>
                 <!-- CONTENT -->
-                <div class="w-100">
+                <div class="col-md-6 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Personas de Contacto</h4>
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>Primer Apellido</th>
-                                        <th>Segundo Apellido</th>
-                                        <th>Correo electrónico</th>
-                                        <th>Teléfono</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody th:each="entry,status : ${personas}">
-                                    <tr>
-                                        <td th:text="${entry.idCliente}">NOMBRE</td>
-                                        <td th:text="${entry.nombre}">NOMBRE</td>
-                                        <td th:text="${entry.apellido1}">NOMBRE</td>
-                                        <td th:text="${entry.apellido2}">NOMBRE</td>
-                                        <td th:text="${entry.email}">NOMBRE</td>
-                                        <td th:text="${entry.telefono}">NOMBRE</td>
-                                        <td>
-                                            <a th:href="@{/borrar/{id}(id=${entry.id})}"
-                                               class="btn btn-dark">Borrar contacto</a>
-                                        </td>
+                            <h4 class="card-title">Default form</h4>
+                            <p class="card-description">
+                                Basic form layout
+                            </p>
+                            <form action="#" th:action="@{/registroVisitas}" th:object="${visitaTrabajo}" method="post"
+                                  class="forms-sample">
+                                <div class="form-group">
+                                    <label>Fecha de vsita</label>
+                                    <input class="form-control" th:field="*{fecha}"
+                                           id="fechaNacimiento" placeholder="dd/mm/yyyy"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Consultor</label>
+                                    <select class="form-control form-control-sm" th:field="*{idConsultor}" id="idConsultor">
+                                        <option value="0">Seleccione el consultor</option>
+                                        <option th:each="auditor : ${auditores}" th:value="${auditor.nombre}" th:text="${auditor.nombre}">1</option>
 
-                                    </tr>
+                                    </select>
+                                </div>
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                <div class="form-group">
+                                    <label>Cliente a visitar</label>
+                                    <select th:field="*{idCliente}"  id="idCliente" class="form-control form-control-sm">
+                                        <option value="0">Seleccione el cliente</option>
+                                        <option th:each="auditor : ${auditores}" th:value="${auditor.nombre}" th:text="${auditor.nombre}">1</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Especialidad</label>
+                                    <select th:field="*{area}" class="form-control form-control-sm" id="area">
+                                        class="form-control">
+                                        <option th:value="'Calidad'">Calidad</option>
+                                        <option th:value="'Procesos'">Procesos</option>
+                                        <option th:value="'Salubridad'">Salubridad</option>
+                                        <option th:value="'Seguridad Laboral'">Seguridad Laboral</option>
+                                        <option th:value="'Seguridad de TI'">Seguridad de TI</option>
+                                    </select>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary me-2">Registrar</button>
+                                <button class="btn btn-light">Cancelar</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -200,12 +213,7 @@
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    <script>
-        var id = String(window.location.href);
-        id = id.substr(34);
-        console.log(id);
-        sessionStorage.setItem('IdCliente', id);
-    </script>
+
     <!-- plugins:js -->
     <script src="../vendors/base/vendor.bundle.base.js"></script>
     <!-- endinject -->

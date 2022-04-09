@@ -143,7 +143,7 @@
                             <div>
                                 <h4 class="font-weight-bold mb-0">Servicio de auditorias</h4>
                             </div>
-                            <a href="/registroAuditores"  class="btn btn-dark btn-lg btn-block">Registrar auditor</a>
+                            <a href="/registroAuditores" class="btn btn-dark btn-lg btn-block">Registrar auditor</a>
 
                         </div>
                     </div>
@@ -175,18 +175,28 @@
                                     </thead>
                                     <tbody th:each="entry,status : ${auditor}">
                                     <tr>
-                                        <td  th:text="${entry.id}">ID</td>
-                                        <td  th:text="${entry.nombre}">NOMBRE</td>
-                                        <td  th:text="${entry.apellido1}">NOMBRE</td>
-                                        <td  th:text="${entry.apellido2}">NOMBRE</td>
-                                        <td  th:text="${entry.email}">NOMBRE</td>
-                                        <td  th:text="${entry.telefono}">NOMBRE</td>
-                                        <td  th:text="${entry.fechaNacimiento}">NOMBRE</td>
-                                        <td  th:text="${entry.direccion}">NOMBRE</td>
-                                        <td  th:text="${entry.disponibilidadViaje}">NOMBRE</td>
-                                        <td  th:text="${entry.especialidad}">NOMBRE</td>
-                                        <td  th:text="${entry.estado}">NOMBRE</td>
-                                       
+                                        <td th:text="${entry.id}">ID</td>
+                                        <td th:text="${entry.nombre}">NOMBRE</td>
+                                        <td th:text="${entry.apellido1}">APELLIDO1</td>
+                                        <td th:text="${entry.apellido2}">APELLIDO2</td>
+                                        <td th:text="${entry.email}">EMAIL</td>
+                                        <td th:text="${entry.telefono}">TELEFONO</td>
+                                        <td th:text="${entry.fechaNacimiento}">FECHANACIMIENTO</td>
+                                        <td th:text="${entry.direccion}">DIRECCION</td>
+                                        <td th:text="${entry.disponibilidadViaje}">DISPONIBILIDAD</td>
+                                        <td th:text="${entry.especialidad}">ESPECIALIDAD</td>
+                                        <td>
+                                            <a class="btn btn-dark btn-rounded btn-fw"
+                                               th:href="@{/activar/{id}(id=${entry.id})}"
+                                               th:text="${entry.estado}">ESTADO</a>
+                                        </td>
+                                        <td>
+                                            <a th:href="@{/editarAuditor/{id}(id=${entry.id})}" class="btn btn-info btn-icon-text">
+                                                Editar
+                                                <i class="ti-file btn-icon-append"></i>
+                                            </a>
+                                        </td>
+
                                     </tr>
 
                                     </tbody>
