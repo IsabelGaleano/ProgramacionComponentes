@@ -3,6 +3,7 @@ package com.cenfotec.examen.controller;
 import com.cenfotec.examen.domain.Auditor;
 import com.cenfotec.examen.domain.VisitaTrabajo;
 import com.cenfotec.examen.service.AuditorService;
+import com.cenfotec.examen.service.ClienteService;
 import com.cenfotec.examen.service.VisitaTrabajoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ public class VisitaTrabajoController {
     VisitaTrabajoService visitaService;
     @Autowired
     AuditorService auditorService;
+    @Autowired
+    ClienteService clienteService;
 
     @RequestMapping("/listadoVisitas")
     public String index(Model model){
@@ -30,6 +33,7 @@ public class VisitaTrabajoController {
     @RequestMapping("/registroVisitas")
     public String getAuditores(Model model){
         model.addAttribute("auditores", auditorService.getAll());
+        model.addAttribute("clientes", clienteService.getAll());
         model.addAttribute(new VisitaTrabajo());
         return "registroVisitas";
     }
