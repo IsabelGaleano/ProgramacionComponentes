@@ -1,5 +1,6 @@
 package com.cenfotec.examen.service;
 
+import com.cenfotec.examen.domain.Auditor;
 import com.cenfotec.examen.domain.Persona;
 import com.cenfotec.examen.repository.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,10 @@ public class PersonaService {
     public Optional<Persona> getById(int id) {
         return personaRepository.findById(Long.valueOf(id));
     }
-    public void updatePersona(Persona journal) {
-        personaRepository.save(journal);
+    public void updatePersona(Persona persona) {
+        personaRepository.save(persona);
     }
+
 
     public List<Persona> getAll() {
         return personaRepository.findAll();

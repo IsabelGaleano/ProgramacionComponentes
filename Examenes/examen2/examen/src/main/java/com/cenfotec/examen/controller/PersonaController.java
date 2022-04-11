@@ -1,5 +1,6 @@
 package com.cenfotec.examen.controller;
 
+import com.cenfotec.examen.domain.Auditor;
 import com.cenfotec.examen.domain.Persona;
 import com.cenfotec.examen.service.ClienteService;
 import com.cenfotec.examen.service.PersonaService;
@@ -49,28 +50,29 @@ public class PersonaController {
         return "index";
     }
 
+
     @RequestMapping(value = "/editarPersona/{id}")
-    public String irAEditar(Model model, @PathVariable int id) {
+    public String editar(Model model, @PathVariable int id){
         Optional<Persona> personaToEdit = personaService.getById(id);
         if (personaToEdit.isPresent()) {
             model.addAttribute("personaToEdit", personaToEdit);
-            return "editFormPersona";
+            return "editarPersona";
+
         } else {
-            return "notFound";
+            return "error";
         }
+
     }
 
     @RequestMapping(value = "/editarPersona/{id}", method = RequestMethod.POST)
-    public String guardarCambios(Persona persona, BindingResult result, Model model,
-                                 @PathVariable int id) {
+    public String actualizarPersona(Persona persona, BindingResult result, Model model, @PathVariable int id){
         personaService.updatePersona(persona);
         return "exito";
-    }
 
-    @RequestMapping(value = "/borrar/{id}")
+    }
+    @RequestMapping(value = "/borrarPersona/{id}")
     public String borrar(Model model, @PathVariable int id) {
         personaService.deletePersona(id);
         return "exito";
     }
-
 }
