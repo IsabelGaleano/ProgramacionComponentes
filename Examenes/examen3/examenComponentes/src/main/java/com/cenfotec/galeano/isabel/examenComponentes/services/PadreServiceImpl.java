@@ -39,7 +39,7 @@ public class PadreServiceImpl implements PadreService {
         if (record.isPresent()) {
             Padre data = record.get();
             data.setCedula(padre.getCedula());
-            data.setNombre(padre.getCedula());
+            data.setNombre(padre.getNombre());
             data.setApellido1(padre.getApellido1());
             data.setApellido2(padre.getApellido2());
             data.setDireccion(padre.getDireccion());

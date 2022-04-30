@@ -1,6 +1,7 @@
 package com.cenfotec.galeano.isabel.examenComponentes.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Hijo {
@@ -12,27 +13,25 @@ public class Hijo {
     private String apellido2;
     private String tipoPlan;
     private String alergias;
-    @ManyToOne
-    @JoinColumn(name = "padre_id")
-    private Padre padre;
+    private Long idPadre;
 
-    public Padre getPadre() {
-        return padre;
-    }
+    @OneToMany
+    private List<Libro> libros;
+
 
     public Hijo() {
     }
 
-    public Hijo(Long id, String nombre, String apellido1, String apellido2, String tipoPlan, String alergias, Padre padre) {
+    public Hijo(Long id, String nombre, String apellido1, String apellido2, String tipoPlan, String alergias, Long idPadre, List<Libro> libros) {
         this.id = id;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.tipoPlan = tipoPlan;
         this.alergias = alergias;
-        this.padre = padre;
+        this.idPadre = idPadre;
+        this.libros = libros;
     }
-
 
     public Long getId() {
         return id;
@@ -82,7 +81,19 @@ public class Hijo {
         this.alergias = alergias;
     }
 
-    public void setPadre(Padre padre) {
-        this.padre = padre;
+    public Long getIdPadre() {
+        return idPadre;
+    }
+
+    public void setIdPadre(Long idPadre) {
+        this.idPadre = idPadre;
+    }
+
+    public List<Libro> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(List<Libro> libros) {
+        this.libros = libros;
     }
 }
