@@ -1,0 +1,27 @@
+type LibroQL {
+    id: ID!,
+    nombre: String,
+    autor: String,
+    precio: String,
+    estado: String
+}
+
+type Query {
+    libros(count: Int):[LibroQL],
+    libro(id: ID): LibroQL
+}
+
+type Mutation {
+    createLibro(nombre: String!,
+                    autor: String!,
+                    precio: String,
+                    estado: String): LibroQL,
+
+     updateLibro(id: ID!,
+                        nombre: String!,
+                        autor: String!,
+                        precio: String, estado: String): LibroQL,
+
+     deleteLibro(id: ID!,
+                 estado: String): LibroQL
+}

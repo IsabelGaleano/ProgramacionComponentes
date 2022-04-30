@@ -21,14 +21,15 @@ public class HijoServiceImpl implements HijoService {
     }
 
     @Override
+    public List<Hijo> findAllByPadre(long idPadre) {
+        return hijoRepository.findAllByIdPadre(idPadre);
+    }
+
+    @Override
     public Optional<Hijo> findById(long id) {
         return hijoRepository.findById(id).map(record -> Optional.of(record)).orElse(Optional.empty());
     }
 
-    @Override
-    public List<Hijo> findAllByPadre(Long id) {
-        return hijoRepository.findAllByPadreId(id);
-    }
 
     @Override
     public Optional<Hijo> save(Hijo hijo) {
@@ -45,7 +46,7 @@ public class HijoServiceImpl implements HijoService {
             data.setApellido2(hijo.getApellido2());
             data.setTipoPlan(hijo.getTipoPlan());
             data.setAlergias(hijo.getAlergias());
-            data.setPadre(hijo.getPadre());
+
 
             return Optional.of(hijoRepository.save(data));
         }

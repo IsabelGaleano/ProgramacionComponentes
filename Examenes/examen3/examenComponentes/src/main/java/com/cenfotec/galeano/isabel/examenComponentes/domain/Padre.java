@@ -1,9 +1,7 @@
 package com.cenfotec.galeano.isabel.examenComponentes.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Padre {
@@ -17,11 +15,13 @@ public class Padre {
     private String direccion;
     private String telefonoPrimario;
     private String telefonoSecundario;
+    @OneToMany
+    private List<Hijo> hijos;
 
     public Padre() {
     }
 
-    public Padre(Long id, String nombre, String apellido1, String apellido2, String cedula, String direccion, String telefonoPrimario, String telefonoSecundario) {
+    public Padre(Long id, String nombre, String apellido1, String apellido2, String cedula, String direccion, String telefonoPrimario, String telefonoSecundario, List<Hijo> hijos) {
         this.id = id;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -30,6 +30,7 @@ public class Padre {
         this.direccion = direccion;
         this.telefonoPrimario = telefonoPrimario;
         this.telefonoSecundario = telefonoSecundario;
+        this.hijos = hijos;
     }
 
     public Long getId() {
@@ -94,5 +95,13 @@ public class Padre {
 
     public void setApellido2(String apellido2) {
         this.apellido2 = apellido2;
+    }
+
+    public List<Hijo> getHijos() {
+        return hijos;
+    }
+
+    public void setHijos(List<Hijo> hijos) {
+        this.hijos = hijos;
     }
 }

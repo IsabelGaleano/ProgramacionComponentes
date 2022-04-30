@@ -1,6 +1,8 @@
 package com.cenfotec.galeano.isabel.examenComponentes.controller;
 
+import com.cenfotec.galeano.isabel.examenComponentes.domain.Hijo;
 import com.cenfotec.galeano.isabel.examenComponentes.domain.Padre;
+import com.cenfotec.galeano.isabel.examenComponentes.services.HijoService;
 import com.cenfotec.galeano.isabel.examenComponentes.services.PadreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,9 @@ import java.util.Optional;
 public class PadreController {
     @Autowired
     private PadreService padreService;
+
+    @Autowired
+    private HijoService hijoService;
 
     @GetMapping
     public List getAll(){
@@ -37,10 +42,23 @@ public class PadreController {
         }
     }
 
-    @GetMapping(path = {"/{nombre}"})
-    public ResponseEntity<Padre> findByNombreApellidos(@PathVariable String nombre){
+
+    @GetMapping(value = {"/{nombre}"})
+    public ResponseEntity<Padre> findByNombreApellidos(@PathVariable("nombre") String nombre){
         Optional<Padre> result = padreService.findByNombreApellidos(nombre,nombre, nombre);
         if (result.isPresent()){
+            return ResponseEntity.ok().body(result.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping(path = {"/findPadreById/{idPadre}"})
+    public ResponseEntity<Padre> findByNombreApellidos(@PathVariable long idPadre){
+        List<Hijo> hijos = hijoService.findAllByPadre(idPadre);
+        Optional<Padre> result = padreService.findById(idPadre);
+        if (result.isPresent()){
+            result.get().setHijos(hijos);
             return ResponseEntity.ok().body(result.get());
         } else {
             return ResponseEntity.notFound().build();
